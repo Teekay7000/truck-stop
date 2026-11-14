@@ -1,101 +1,73 @@
 # South African Truck Stop Network
 
-## Overview
+## Project Overview
 
-The South African Truck Stop Network is a technology platform aimed at connecting trucking companies, truck drivers and truck-stop facility operators across South Africa.
+A platform designed to connect trucking companies, truck drivers and truck-stop operators across South Africa.
 
-The platform aims to make it easier for drivers to discover secure truck-stop facilities, access available services and eventually make parking reservations.
-
-## Project Objectives
-
-- Connect truck drivers with secure truck-stop facilities.
-- Allow facility operators to register and manage their facilities.
-- Enable trucking companies to find facilities for their drivers.
-- Provide information about parking capacity and available facilities.
-- Support future booking and availability management.
+The platform aims to make it easier to discover truck stops, access facility information and eventually book secure parking.
 
 ## Technology Stack
 
-- **Backend:** Python, FastAPI
-- **Data Validation:** Pydantic
-- **Database:** PostgreSQL (planned)
-- **Authentication:** Firebase (planned)
+- Python
+- FastAPI
+- PostgreSQL
+- SQLAlchemy
+- Pydantic
+- Git and GitHub
 
 ## Current Development Progress
 
-The initial backend has been created.
+### Backend API
 
-Implemented:
-- FastAPI application setup.
-- API welcome endpoint.
-- Pydantic request model for truck-stop registration.
-- POST endpoint for receiving truck-stop information.
+- [x] FastAPI application setup
+- [x] PostgreSQL database connection
+- [x] SQLAlchemy database configuration
+- [x] Truck stop database model
+- [x] Automatic database table creation
+- [x] Create a truck stop (POST)
+- [x] Retrieve all truck stops (GET)
+- [x] Retrieve a truck stop by ID (GET)
+- [x] Update truck stop information (PUT)
+- [x] Delete a truck stop (DELETE)
+- [x] Handle truck stops that do not exist using HTTP 404
 
-## API Endpoints
+### Current API Endpoints
 
 | Method | Endpoint | Description |
 |---|---|---|
-| GET | `/` | Returns the API welcome message |
-| POST | `/truck-stops` | Receives truck-stop registration information |
+| POST | `/truck-stops` | Register a truck stop |
+| GET | `/truck-stops` | Retrieve all truck stops |
+| GET | `/truck-stops/{truck_stop_id}` | Retrieve one truck stop |
+| PUT | `/truck-stops/{truck_stop_id}` | Update a truck stop |
+| DELETE | `/truck-stops/{truck_stop_id}` | Delete a truck stop |
 
-## Running the Project Locally
+## Database
 
-### 1. Clone the repository
+PostgreSQL is used as the primary database.
 
-```bash
-git clone https://github.com/Teekay7000/truck-stop.git
-```
+Current table:
 
-### 2. Navigate into the project
+- `truck_stops`
 
-```bash
-cd truck-stop
-```
+Current fields:
 
-### 3. Create a virtual environment
+- `id`
+- `name`
+- `town`
+- `parking_capacity`
 
-```bash
-python -m venv venv
-```
+## Running the Application
 
-### 4. Activate the virtual environment
-
-Windows:
-
-```bash
-venv\Scripts\activate
-```
-
-### 5. Install dependencies
-
-```bash
-pip install fastapi uvicorn
-```
-
-### 6. Start the development server
+Activate the virtual environment and run:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-### 7. Access the API
+API documentation:
 
-- API: http://127.0.0.1:8000/
-- Interactive API documentation: http://127.0.0.1:8000/docs
-
-## Future Development
-
-- PostgreSQL database integration.
-- Persistent truck-stop facility registration.
-- Facility management.
-- User authentication and authorisation.
-- Truck-stop availability management.
-- Parking reservation functionality.
-- Fleet and trucking company management.
-- Nationwide facility expansion.
+`http://127.0.0.1:8000/docs`
 
 ## Project Status
 
-**Currently under development.**
-
-This project is being developed incrementally, with a focus on building a scalable backend foundation for a South African truck-stop network.
+Backend development is in progress. The initial truck-stop CRUD functionality has been implemented and tested with PostgreSQL.
